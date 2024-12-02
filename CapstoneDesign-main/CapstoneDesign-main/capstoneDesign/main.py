@@ -100,7 +100,8 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
                         arm_counter += 1
                         print(f"Arm counter: {arm_counter}")
 
-                    udp_socket.sendto(str(arm_counter).encode(), udp_serverAddressPort)
+                    udp_socket.sendto(f"{arm_counter},{turtle_neck_count}".encode(), udp_serverAddressPort)
+
 
                     cv2.rectangle(image, (0, 0), (280, 73), (245, 117, 16), -1)
 
@@ -173,7 +174,8 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
                         turtle_counter += 1
                         print(f"Turtle neck counter: {turtle_counter}")
 
-                    udp_socket.sendto(str(turtle_counter).encode(), udp_serverAddressPort)
+                    udp_socket.sendto(f"{arm_counter},{turtle_neck_count}".encode(), udp_serverAddressPort)
+
 
             except Exception as e:
                 print("Error detecting landmarks:", e)

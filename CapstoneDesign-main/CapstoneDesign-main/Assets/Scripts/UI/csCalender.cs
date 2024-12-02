@@ -7,12 +7,21 @@ public class csCalender : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject Calender;
+    public AudioSource audioSource;
+    public AudioClip audioClip;
 
     // Start is called before the first frame update
     void Start()
     {
         Button buttonCalender = GetComponent<Button>();
         buttonCalender.onClick.AddListener(OnButtonClick);
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        audioSource.clip = audioClip;
     }
 
     // Update is called once per frame
@@ -22,7 +31,8 @@ public class csCalender : MonoBehaviour
     }
     void OnButtonClick()
     {
-        Debug.Log("clicked");
+        //Debug.Log("clicked");
         Calender.SetActive(true);
+        audioSource.Play();
     }
 }

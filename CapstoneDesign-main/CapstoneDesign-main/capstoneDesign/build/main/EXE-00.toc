@@ -79,7 +79,7 @@
  [],
  False,
  False,
- 1731417774,
+ 1732535168,
  [('run.exe',
    'C:\\Users\\HSD\\Desktop\\CapstoneDesign\\CapstoneDesign-main\\CapstoneDesign-main\\capstoneDesign\\venv\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
    'EXECUTABLE')],

@@ -8,6 +8,7 @@ public class csWorkout : MonoBehaviour
     public GameObject playWorkout;
     public UDPTCPReceive udptcpReceive;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +35,7 @@ public class csWorkout : MonoBehaviour
     }
     void OnButtonClick()
     {
-        Debug.Log("clicked");
+        //Debug.Log("clicked");
         
         playWorkout.SetActive(true);
 

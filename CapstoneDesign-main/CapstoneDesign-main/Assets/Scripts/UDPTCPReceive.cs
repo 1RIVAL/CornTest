@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using System.Text;
 
 
+
 public class UDPTCPReceive : MonoBehaviour
 {
     private Thread receiveThread; // 데이터 수신 스레드
@@ -33,7 +34,8 @@ public class UDPTCPReceive : MonoBehaviour
     public GameObject playTurtleNeck;
 
     public string data; // 데이터 저장 변수
-    public int counter; // 횟수 저장 변수
+    public int armCounter; // 횟수 저장 변수_arm
+    public int turtleCounter; // 횟수 저장 변수_turtle
     public bool printToConsole = false; // 데이터 콘솔 출력 여부
 
     void Start()
@@ -90,12 +92,25 @@ public class UDPTCPReceive : MonoBehaviour
                     byte[] dataByte = udpClient.Receive(ref anyIP);
                     //data = Encoding.UTF8.GetString(dataByte);
 
-                    lock (lockObject)
+                    // 데이터 값 파싱: "armCounter,turtleNeckCount"
+                    string receivedData = Encoding.UTF8.GetString(dataByte);
+                    string[] splitData = receivedData.Split(',');
+
+                    if (splitData.Length == 2)
                     {
-                        counter = int.Parse(Encoding.UTF8.GetString(dataByte)); // UDP로 전송된 counter 값 업데이트
+                        // 각 값을 분리하여 각각의 카운터 값에 할당
+                        lock (lockObject)
+                        {
+                            armCounter = int.Parse(splitData[0]);  // armCounter
+                            turtleCounter = int.Parse(splitData[1]);  // turtleNeckCount
+                        }
                     }
 
-                    if (printToConsole) { print(counter); }
+                    if (printToConsole) 
+                    {
+                        print("Arm Counter: " + armCounter);
+                        print("Turtle Neck Counter: " + turtleCounter);
+                    }
 
                 }
                 catch (Exception e)

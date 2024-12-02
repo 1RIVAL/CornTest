@@ -8,6 +8,8 @@ using System;
 
 public class csCalenderOp : MonoBehaviour
 {
+    
+    
 
     /// <summary>
     /// Cell or slot in the calendar. All the information each day should now about itself
@@ -85,6 +87,8 @@ public class csCalenderOp : MonoBehaviour
     private void Start()
     {
         UpdateCalendar(DateTime.Now.Year, DateTime.Now.Month);
+
+        
     }
 
     /// <summary>
@@ -184,5 +188,6 @@ public class csCalenderOp : MonoBehaviour
         }
 
         UpdateCalendar(currDate.Year, currDate.Month);
+        
     }
 }
